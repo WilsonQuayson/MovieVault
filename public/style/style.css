@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+/*
+  font-family: "Anton SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+/*
+  font-family: "Radio Canada Big", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+*/
+:root{
+    --background: #1b1b1b;
+    --background-offset: #272727;
+    --text: white;
+    --text-hover: rgb(224, 224, 224);
+    --slider-padding: 5rem;
+    --handle-size: 3rem;
+    --img-gap: .25rem;
+    --font-title: "Anton SC", sans-serif;
+    --font-text: "Radio Canada Big", sans-serif;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background);
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    height: 100vh;
+}
+
+.index-body{
+    overflow: hidden; 
+}
+
+
+/* -------------------------------- NAV ---------------------------------- */
+
+.desktop-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 4em;
+}
+
+.desktop-nav > ul{
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav > ul > li > img{
+    height: 3em;
+    width: auto;
+}
+
+.desktop-nav > ul:first-child{
+    padding-left: 4em;
+}
+
+.desktop-nav > ul:first-child > li > a{
+    text-decoration: none;
+    color: var(--text);
+    transition: color 200ms ease-in-out;
+}
+
+.desktop-nav > ul:first-child > li > a:hover{
+    color: var(--text-hover);
+}
+
+.desktop-nav > ul:first-child > li:first-child{
+    padding-right: 4em;
+    font-family: "Anton SC", sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
+.desktop-nav > ul:first-child > li:not(:first-child){
+    padding-right: 1em;
+    font-size: 15px;
+    font-family: "Radio Canada Big", sans-serif;
+}
+
+.desktop-nav > ul:last-child{
+    padding-right: 4em;
+}
+
+.desktop-nav > ul:last-child > li:last-child{
+    padding-left: 2em;
+}
+
+.desktop-nav > ul:last-child > li:last-child > a{
+    text-decoration: none;
+    font-family: "Radio Canada Big", sans-serif;
+    color: var(--text);
+    transition: color 200ms ease-in-out;
+}
+
+.desktop-nav > ul:last-child > li:last-child > a:hover{
+    text-decoration: none;
+    color: var(--text-hover);
+}
+
+nav{
+    background-color: #1b1b1b;
+    background: linear-gradient(to bottom, #1b1b1b49, #1b1b1b00);
+}
+
+/* -------------------------------- INDEX-MAIN ---------------------------------- */
+
+.index-main{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 4em;
+    padding: 8em 4em 4em 4em;
+    font-family: "Radio Canada Big", sans-serif;
+}
+
+.index-main > section{
+    margin-bottom: 2em;
+}
+
+.index-main > section > h1{
+    color: var(--text);
+    margin-left: 8%;
+    margin-bottom: 0.5em;
+    font-size: 40px;
+}
+
+.index-main > section > ul > li{
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.index-main > section > ul{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+/* -------------------------------- SERIES-MAIN ---------------------------------- */
+
+.series-main{
+    padding: 8em 0em 0em 0em;
+    font-family: "Radio Canada Big", sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slider{
+    --slider-index: 0;
+    --items-per-screen: 6;
+    display: flex;
+    flex-grow: 1;
+    transform: translateX(calc(var(--slider-index) * -100%));
+    transition: transform 500ms ease-in-out;
+    margin: 0 var(--img-gap);
+}
+
+.slider > img{
+    flex: 0 0 calc(100% / var(--items-per-screen));
+    max-width: calc(100% / var(--items-per-screen));
+    aspect-ratio: 16/9;
+    padding: var(--img-gap);
+    border-radius: .5rem;
+    overflow: hidden;
+    background-color: rgba(0, 255, 255, 0.185);
+}
+
+.handle{
+    border: none;
+    border-radius: 1rem;
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0.192);
+    z-index: 10;
+    margin: var(--img-gap) 0;
+    padding: 0 .5rem;
+    cursor: pointer;
+    width: var(--handle-size);
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    line-height: 0;
+    transition: background-color 150ms ease-in-out;
+}
+
+.left-handle{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.right-handle{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.handle:hover,
+.handle:focus{
+    background-color: rgba(0, 0, 0, 0.336);
+}
+
+.text{
+    transition: transform 150ms ease-in-out;
+}
+
+.handle:hover .text,
+.handle:focus .text{
+    transform: scale(1.2);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem calc(var(--img-gap) * 2 + var(--handle-size));
+    align-items: center;
+}
+
+.title{
+    font-size: 2rem;
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-text);
+}
+
+.progress-bar{
+    display: flex;
+    gap: .25rem;
+}
+
+.progress-item{
+    flex: 0 0 2rem;
+    min-width: 2rem;
+    height: .5rem;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.progress-item.active{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+/*
+@media (max-width: 1000px) {
+    .slider {
+        --items-per-screen: 3;
+    }
+}
+*/
+
+/* -------------------------------- LOGIN ---------------------------------- */
+
+.login-body > a{
+    color: white;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    font-size: 3rem;
+    text-decoration: none;
+    transform: scaleX(-1);
+}
+
+.login-main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-main > section{
+    width: 20rem;
+    height: auto;
+    background-color: var(--background-offset);
+    border-radius: 25px;
+    padding: 2rem;
+}
+
+.login-main > section > form{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-bottom: .5rem;
+}
+
+.login-main > section > form > button{
+    width: 30%;
+    margin-top: 1rem;
+}
+
+.login-main > section > form > label{
+    font-family: var(--font-text);
+    color: var(--text);
+}
+
+.login-main > section > a{
+    color: var(--text);
+}
+
+
+
+
